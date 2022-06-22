@@ -13,7 +13,6 @@ import json
 import numpy as np
 
 
-
 # Create your views here.
 def index(request):
     print(request)
@@ -103,15 +102,10 @@ def test(request):
         if "text" in duken[i]:
             duken[i] = re.sub('text', '<mark><font size="3"><b> text </b></font></mark>', duken[i])
 
-
-
     mylist = zip(duken, who, where, counts)
     return render(request, 'news/shablon.html', {'mylist': mylist})
 
 
-
-
-
 def qw(request):
     print(request)
-    return HttpResponse('<h3>trololololololoololo</h3>')
+    return render(request, 'news/jai.html')
