@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+
+</style>
+
+<head>
+    <style>
+    </style>
+    <meta charset="UTF-8">
+    <title>Security Events</title>
+    <!-- Latest compiled and minified CSS -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="extensions/sticky-header/bootstrap-table-sticky-header.css">
+    <script src="extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
+</head>
+
+<body>
+<div class="table-responsive ">
+<table class="table table-hover table-bordered table-condensed ">
+    <thead class="undefined sticky header">
+        <tr style = "background-color: #d26969">
+            <th>What</th>
+            <th>Where</th>
+            <th>Who</th>
+            <th>Occurrences</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+          {% for item in mylist %}
+                {% if "A new process has been created" in item.0  %}
+                    <td class = "table-danger "><a href="processes/">{% autoescape off %}{{ item.0|linebreaks|safe }}{% endautoescape %}</a></td>
+                    <td>{{ item.1|linebreaks }}</td>
+                    <td>{{ item.2|linebreaks }}</td>
+                    <td>{{ item.3|linebreaks }}</td>
+
+                {% else %}
+                    <td>{% autoescape off %}{{ item.0|linebreaks }}{% endautoescape %}</td>
+                    <td>{{ item.1|linebreaks }}</td>
+                    <td>{{ item.2|linebreaks }}</td>
+                    <td>{{ item.3|linebreaks }}</td>
+                {% endif %}
+      </tr>
+        {% endfor %}
+    </tbody>
+
+  </table>
+</div>
+</body>
+</html>
