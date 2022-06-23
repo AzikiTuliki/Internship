@@ -35,19 +35,9 @@ def test(request):
     }
 
     result = client.search(index="security_events_1_19127", body=query_body, size=1000)
-    # pprint.pprint(result["hits"])
-
-    # print(result["hits"]["hits"])
-
-    # for hit in result['hits']['hits']:
-    #   str1 = ', '.join(' = '.join((key, val)) for (key, val) in hit["_source"]["what"].items())
-
     arr = []
 
     for hit in result['hits']['hits']:
-        # print(hit["_source"]["what"])
-        # this-list.append(hit["_source"]["what"])
-
         str0 = '\n '.join(
             ' = '.join((key, val)) for (key, val) in hit["_source"]["what"].items()) + ' +++ ' + '\n '.join(
             ' = '.join((key, val)) for (key, val) in hit["_source"]["who"].items()) + ' +++ ' + '\n '.join(
@@ -55,7 +45,6 @@ def test(request):
         arr.append(str0)
 
     b = set(arr)
-    # print(len(b))
     values, counts = np.unique(arr, return_counts=True)
 
     separator = ' +++ '
@@ -76,8 +65,6 @@ def test(request):
         where.append(d)
         f = arr1[i][2]
         who.append(f)
-
-    process_created = []
 
     new_separator = '\n '
     new_what = []
