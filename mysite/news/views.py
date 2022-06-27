@@ -13,6 +13,7 @@ import json
 import numpy as np
 
 
+
 # Create your views here.
 def index(request):
     print(request)
@@ -24,6 +25,9 @@ def test(request):
     client = Elasticsearch("http://192.168.56.101:9200")
 
     query_body = {
+        "_source": {
+            "excludes": ["who.spt", "who.dpt"]
+        },
         "query": {
             "range": {
                 "timestamp": {
