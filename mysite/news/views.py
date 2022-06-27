@@ -26,8 +26,7 @@ def test(request):
 
     query_body = {
         "_source": {
-            "excludes": ["who.spt", "who.dpt"]
-        },
+            "excludes": ["who.spt", "who.dpt"]},
         "query": {
             "range": {
                 "timestamp": {
