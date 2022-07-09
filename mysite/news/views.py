@@ -13,7 +13,6 @@ import json
 import numpy as np
 
 
-
 # Create your views here.
 def index(request):
     print(request)
